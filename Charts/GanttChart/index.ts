@@ -1,4 +1,5 @@
-import {IInputs, IOutputs} from "./generated/ManifestTypes";
+import { IInputs, IOutputs } from "./generated/ManifestTypes";
+import Gantt = require("frappe-gantt")
 
 export class GanttChart implements ComponentFramework.StandardControl<IInputs, IOutputs> {
 
@@ -20,7 +21,28 @@ export class GanttChart implements ComponentFramework.StandardControl<IInputs, I
 	 */
 	public init(context: ComponentFramework.Context<IInputs>, notifyOutputChanged: () => void, state: ComponentFramework.Dictionary, container:HTMLDivElement): void
 	{
-		// Add control initialization code
+		var tasks = [
+			{
+				id: 'Task 1',
+				name: 'Redesign website',
+				start: '2016-12-28',
+				end: '2016-12-31',
+				progress: 20,
+				dependencies: "",
+				custom_class: 'bar-milestone'
+			},
+			{
+				id: 'Task 2',
+				name: 'Redesign website',
+				start: '2016-12-28',
+				end: '2016-12-31',
+				progress: 20,
+				dependencies: "Task 1",
+				custom_class: 'bar-milestone'
+			}
+		]
+
+		var gantt = new (Gantt as any).default(container, tasks);
 	}
 
 
