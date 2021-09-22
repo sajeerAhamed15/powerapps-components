@@ -1,8 +1,8 @@
 import { IInputs, IOutputs } from "./generated/ManifestTypes";
 import Gantt = require("frappe-gantt")
 
-export class GanttChart implements ComponentFramework.StandardControl<IInputs, IOutputs> {
-
+export class GanttChart2 implements ComponentFramework.StandardControl<IInputs, IOutputs> {
+	private mainContainer: HTMLDivElement;
 	/**
 	 * Empty constructor.
 	 */
@@ -20,29 +20,37 @@ export class GanttChart implements ComponentFramework.StandardControl<IInputs, I
 	 * @param container If a control is marked control-type='standard', it will receive an empty div element within which it can render its content.
 	 */
 	public init(context: ComponentFramework.Context<IInputs>, notifyOutputChanged: () => void, state: ComponentFramework.Dictionary, container:HTMLDivElement): void
-	{
-		var tasks = [
+	{	
+		this.mainContainer = document.createElement("div");
+		// this.mainContainer.style.pointerEvents = "all";
+		this.mainContainer.style.display = "grid";
+		this.mainContainer.className = "gantt-root-1"
+
+		var tasks: Gantt.Task[] = [
 			{
 				id: 'Task 1',
-				name: 'Redesign website',
-				start: '2016-12-28',
-				end: '2016-12-31',
+				name: 'Default Task 1',
+				start: '2016-12-5',
+				end: '2016-12-10',
 				progress: 20,
 				dependencies: "",
 				custom_class: 'bar-milestone'
 			},
 			{
 				id: 'Task 2',
-				name: 'Redesign website',
-				start: '2016-12-28',
-				end: '2016-12-31',
+				name: 'Default Task 1',
+				start: '2016-12-7',
+				end: '2016-12-12',
 				progress: 20,
 				dependencies: "Task 1",
 				custom_class: 'bar-milestone'
 			}
 		]
 
-		var gantt = new (Gantt as any).default(container, tasks);
+		var gantt = new (Gantt as any).default(this.mainContainer, tasks);
+
+
+		container.appendChild(this.mainContainer);
 	}
 
 
@@ -52,7 +60,22 @@ export class GanttChart implements ComponentFramework.StandardControl<IInputs, I
 	 */
 	public updateView(context: ComponentFramework.Context<IInputs>): void
 	{
-		// Add code to update control view
+		if (context.parameters.ChartData.columns.length < 5) return;
+		const recordIds = context.parameters.ChartData.sortedRecordIds;
+
+		const tasks: Gantt.Task[] = []
+		recordIds.forEach(recordId => {
+			tasks.push({
+				id: context.parameters.ChartData.records[recordId].getFormattedValue("id"),
+				name: context.parameters.ChartData.records[recordId].getFormattedValue("name"),
+				start: context.parameters.ChartData.records[recordId].getFormattedValue("start"),
+				end: context.parameters.ChartData.records[recordId].getFormattedValue("end"),
+				progress: parseInt(context.parameters.ChartData.records[recordId].getFormattedValue("progress")),
+				dependencies: context.parameters.ChartData.records[recordId].getFormattedValue("dependencies"),
+			})
+		});
+		
+		var gantt = new (Gantt as any).default(this.mainContainer, tasks);
 	}
 
 	/**

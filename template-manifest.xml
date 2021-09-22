@@ -1,0 +1,92 @@
+<manifest>
+    <control namespace="Lowcodera.DataVisualization" constructor="AreaChart" version="0.2109.1302" display-name-key="Lowcodera Area Chart" description-key="Lowcodera Area Chart" control-type="standard" api-version="1.3.1">
+        <data-set name="ChartData" display-name-key="Chart Data" />
+        <property name="ChartTitle" display-name-key="Chart Title" description-key="Chart Title" of-type="SingleLine.Text" usage="input" required="false" />
+        <property name="ChartSubtitle" display-name-key="Chart Subtitle" description-key="Chart Subtitle" of-type="SingleLine.Text" usage="input" required="false" />
+        <property name="ChartTitleAlign" display-name-key="Chart Title Align" description-key="Chart Title Align" of-type="Enum" usage="input" required="true" default-value="Center">
+            <value name="Left" display-name-key="Left">Left</value>
+            <value name="Center" display-name-key="Center" default="true">Center</value>
+            <value name="Right" display-name-key="Right">Right</value>
+        </property>
+        <property name="ShowTooltip" display-name-key="Show Tooltip" description-key="Show Tooltip" of-type="TwoOptions" usage="input" required="true" default-value="true" />
+        <property name="ShowDataLabel" display-name-key="Show Data Label" description-key="Show Data Label" of-type="TwoOptions" usage="input" required="true" default-value="false" />
+        <property name="DataLabelSymbol" display-name-key="Data Label Symbol" description-key="Data Label Symbol" of-type="SingleLine.Text" usage="input" required="false" />
+        <property name="ShowReversed" display-name-key="Show Reversed" description-key="Show Reversed" of-type="TwoOptions" usage="input" required="true" default-value="false" />
+        <property name="ShowLegend" display-name-key="Show Legend" description-key="Show Legend" of-type="TwoOptions" usage="input" required="true" default-value="true" />
+        <property name="LegendAlign" display-name-key="Legend Align" description-key="Legend Align" of-type="Enum" usage="input" required="true" default-value="Center">
+            <value name="Left" display-name-key="Left">Left</value>
+            <value name="Center" display-name-key="Center" default="true">Center</value>
+            <value name="Right" display-name-key="Right">Right</value>
+        </property>
+        <property name="LegendPosition" display-name-key="Legend Position" description-key="Legend Position" of-type="Enum" usage="input" required="true" default-value="Bottom">
+            <value name="Top" display-name-key="Top">Top</value>
+            <value name="Bottom" display-name-key="Bottom" default="true">Bottom</value>
+            <value name="Left" display-name-key="Left">Left</value>
+            <value name="Right" display-name-key="Right">Right</value>
+        </property>
+        <property name="Theme" display-name-key="Theme" description-key="Theme" of-type="Enum" usage="input" required="true" default-value="Palette01">
+            <value name="Palette01" display-name-key="Palette 01">Palette01</value>
+            <value name="Palette02" display-name-key="Palette 02">Palette02</value>
+            <value name="Palette03" display-name-key="Palette 03">Palette03</value>
+            <value name="Palette04" display-name-key="Palette 04">Palette04</value>
+            <value name="Palette05" display-name-key="Palette 05">Palette05</value>
+            <value name="Palette06" display-name-key="Palette 06">Palette06</value>
+            <value name="Palette07" display-name-key="Palette 07">Palette07</value>
+            <value name="Palette08" display-name-key="Palette 08">Palette08</value>
+            <value name="Palette09" display-name-key="Palette 09">Palette09</value>
+            <value name="Palette10" display-name-key="Palette 10">Palette10</value>
+        </property>
+        <property name="EnableDarkMode" display-name-key="Enable Dark Mode" description-key="Enable Dark Mode" of-type="TwoOptions" usage="input" required="true" default-value="false" />
+        <property name="ShowDownload" display-name-key="Show Download" description-key="Show Download" of-type="TwoOptions" usage="input" required="true" default-value="true" />
+        <property name="LineType" display-name-key="Line Type" description-key="Line Type" of-type="Enum" usage="input" required="true" default-value="Straight">
+            <value name="Straight" display-name-key="Straight" default="true">Straight</value>
+            <value name="Smooth" display-name-key="Smooth">Smooth</value>
+            <value name="Stepline" display-name-key="Stepline">Stepline</value>
+        </property>
+        <property name="ShowYAxisLabel" display-name-key="Show Y Axis Label" description-key="Show Y Axis Label" of-type="TwoOptions" usage="input" required="true" default-value="true" />
+        <property name="YAxisTitle" display-name-key="Y Axis Title" description-key="Y Axis Title" of-type="SingleLine.Text" usage="input" required="false" />
+        <property name="YAxisMinValue" display-name-key="Y Axis Min Value" description-key="Y Axis Min Value" of-type="Decimal" usage="input" />
+        <property name="YAxisMaxValue" display-name-key="Y Axis Max Value" description-key="Y Axis Max Value" of-type="Decimal" usage="input" />
+        <property name="ShowXAxisLabel" display-name-key="Show X Axis Label" description-key="Show X Axis Label" of-type="TwoOptions" usage="input" required="true" default-value="true" />
+        <property name="XAxisTitle" display-name-key="X Axis Title" description-key="X Axis Title" of-type="SingleLine.Text" usage="input" required="false" />
+        <property name="XAxisPosition" display-name-key="X Axis Position" description-key="X Axis Position" of-type="Enum" usage="input" required="true" default-value="Bottom">
+            <value name="Top" display-name-key="Top">Top</value>
+            <value name="Bottom" display-name-key="Bottom" default="true">Bottom</value>
+        </property>
+        <property name="XAxisDataType" display-name-key="X Axis Data Type" description-key="X Axis Data Type" of-type="Enum" usage="input" required="true" default-value="Category">
+            <value name="Category" display-name-key="Category" default="true">Category</value>
+            <value name="DateTime" display-name-key="DateTime">DateTime</value>
+            <value name="Numeric" display-name-key="Numeric">Numeric</value>
+        </property>
+        <property name="Width" display-name-key="Width" description-key="Width" of-type="Decimal" usage="input" required="true" default-value="350" />
+        <property name="Height" display-name-key="Height" description-key="Height" of-type="Decimal" usage="input" required="true" default-value="250" />
+        <property name="FillType" display-name-key="Fill Type" description-key="Fill Type" of-type="Enum" usage="input" required="true" default-value="Solid">
+            <value name="Solid" display-name-key="Solid" default="true">Solid</value>
+            <value name="Image" display-name-key="Image">Image</value>
+            <value name="Gradient" display-name-key="Gradient">Gradient</value>
+        </property>
+        <property name="BackgroundImage" display-name-key="Background Image" description-key="Background Image" of-type="SingleLine.Text" usage="input" required="false" />
+        <property name="GradientShade" display-name-key="Gradient Shade" description-key="Gradient Shade" of-type="Enum" usage="input" required="true" default-value="Light">
+            <value name="Light" display-name-key="Light" default="true">Light</value>
+            <value name="Dark" display-name-key="Dark">Dark</value>
+        </property>
+        <property name="GradientShadeIntensity" display-name-key="Gradient Shade Intensity" description-key="Gradient Shade Intensity" of-type="Decimal" usage="input" required="true" default-value="1" />
+        <property name="GradientOpcityFrom" display-name-key="Gradient Opcity From" description-key="Gradient Opcity From" of-type="Decimal" usage="input" required="true" default-value="1" />
+        <property name="GradientOpcityTo" display-name-key="Gradient Opcity To" description-key="Gradient Opcity To" of-type="Decimal" usage="input" required="true" default-value="1" />
+        <property name="GradientDirection" display-name-key="Gradient Direction" description-key="Gradient Direction" of-type="Enum" usage="input" required="true" default-value="Horizontal">
+            <value name="Horizontal" display-name-key="Horizontal" default="true">Horizontal</value>
+            <value name="Vertical" display-name-key="Vertical">Vertical</value>
+            <value name="Diagonal1" display-name-key="Diagonal 1">Diagonal1</value>
+            <value name="Diagonal2" display-name-key="Diagonal 2">Diagonal2</value>
+        </property>
+        <property name="GradientInverse" display-name-key="Gradient Inverse" description-key="Gradient Inverse" of-type="TwoOptions" usage="input" required="true" default-value="false" />
+        <property name="GradientStop" display-name-key="Gradient Stops" description-key="Gradient Stops" of-type="SingleLine.Text" usage="input" required="false" />
+        <property name="CurrentSeries" display-name-key="Current Series" description-key="Current Series" of-type="Decimal" usage="output" />
+        <property name="CurrentDataPoint" display-name-key="Current Data Point" description-key="Current Data Point" of-type="Decimal" usage="output" />
+        <resources>
+            <code path="bundle.js" order="1" />
+            <css path="lcera_charts.css" order="1" />
+        </resources>
+        <built-by name="pac" version="1.9.4" />
+    </control>
+</manifest>
